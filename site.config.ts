@@ -58,8 +58,17 @@ export default siteConfig({
       pageId: 'e003aedc7f3444069486b13e647c16aa'
     },
     {
+      title: 'Research',
+      pageId: '53f582b8624148a38f18bbeb8bcfe5c3'
+    },
+    {
+      title: 'Blog',
+      pageId: '460f6f019afe41658e9c822e3906009f'
+    },
+    {
       title: 'Contact',
       pageId: '1b21e4748a3d4e69b65634fedfd4bbf7'
-    }
+    },
+
   ]
 })
