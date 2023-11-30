@@ -31,9 +31,13 @@ const ToggleThemeButton = () => {
     setMode(isDarkMode ? 'dark' : 'light')
   }, [])
 
+  React.useEffect(() => {
+    setMode(isDarkMode ? 'dark' : 'light')
+  }, [isDarkMode])
+
   const onToggleTheme = React.useCallback(() => {
     toggleDarkMode()
-    setMode(mode === 'light' ? 'dark' : 'light')
+    // setMode(mode === 'light' ? 'dark' : 'light')
   }, [toggleDarkMode])
 
   return (

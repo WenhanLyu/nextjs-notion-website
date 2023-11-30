@@ -1,12 +1,14 @@
 import * as React from 'react'
 
-import {FaEnvelopeOpenText} from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import {FaGithub} from '@react-icons/all-files/fa/FaGithub'
-import {FaLinkedin} from '@react-icons/all-files/fa/FaLinkedin'
-import {FaMastodon} from '@react-icons/all-files/fa/FaMastodon'
-import {FaTwitter} from '@react-icons/all-files/fa/FaTwitter'
-import {FaYoutube} from '@react-icons/all-files/fa/FaYoutube'
-import {FaZhihu} from '@react-icons/all-files/fa/FaZhihu'
+import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
+import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+import SchoolIcon from '@mui/icons-material/School';
+import EmailIcon from '@mui/icons-material/Email';
 
 import * as config from '@/lib/config'
 
@@ -27,7 +29,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaTwitter/>
+            <FaTwitter />
           </a>
         )}
 
@@ -38,7 +40,7 @@ export const FooterImpl: React.FC = () => {
             title={`Mastodon ${config.getMastodonHandle()}`}
             rel='me'
           >
-            <FaMastodon/>
+            <FaMastodon />
           </a>
         )}
 
@@ -50,7 +52,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaZhihu/>
+            <FaZhihu />
           </a>
         )}
 
@@ -62,7 +64,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaGithub/>
+            <GitHubIcon />
           </a>
         )}
 
@@ -74,7 +76,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaLinkedin/>
+            <LinkedInIcon />
           </a>
         )}
 
@@ -86,7 +88,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaEnvelopeOpenText/>
+            <FaEnvelopeOpenText />
           </a>
         )}
 
@@ -98,7 +100,43 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaYoutube/>
+            <FaYoutube />
+          </a>
+        )}
+
+        {/* {config.resume && (
+          <a
+            className={styles.resume}
+            href={config.resume}
+            title={'My CV'}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <svg width="24px" height="24px" viewBox="0 -2 32 24" xmlns="http://www.w3.org/2000/svg"><g id="fontsvg1701379833028" strokeLinecap="round" fillRule="evenodd" ><path d="M 11.25 20.25 L 2.25 20.25 L 2.25 18 L 0 18 L 0 2.25 L 2.25 2.25 L 2.25 0 L 11.25 0 L 11.25 2.25 L 13.5 2.25 L 13.5 6.75 L 9 6.75 L 9 2.25 L 4.5 2.25 L 4.5 18 L 9 18 L 9 13.5 L 13.5 13.5 L 13.5 18 L 11.25 18 L 11.25 20.25 Z M 27 20.25 L 22.5 20.25 L 22.5 18 L 20.25 18 L 20.25 15.75 L 18 15.75 L 18 0 L 22.5 0 L 22.5 15.75 L 27 15.75 L 27 0 L 31.5 0 L 31.5 15.75 L 29.25 15.75 L 29.25 18 L 27 18 L 27 20.25 Z" vectorEffect="non-scaling-stroke" /></g></svg>
+          </a>
+        )} */}
+
+        {config.google && (
+          <a
+            className={styles.google}
+            href={`https://scholar.google.com/citations?user=${config.google}&hl=en`}
+            title={'Google Scholar'}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <SchoolIcon />
+          </a>
+        )}
+
+        {config.email && (
+          <a
+            className={styles.email}
+            href={`mailto:${config.email}`}
+            title={'Email me'}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <EmailIcon />
           </a>
         )}
       </div>
