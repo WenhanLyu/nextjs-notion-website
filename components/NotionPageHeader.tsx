@@ -1,26 +1,36 @@
 import * as React from 'react'
 
 import * as types from 'notion-types'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import {IoMoonSharp} from '@react-icons/all-files/io5/IoMoonSharp'
+import {IoSunnyOutline} from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import {Breadcrumbs, Header, Search, useNotionContext} from 'react-notion-x'
 
-import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
-import { useDarkMode } from '@/lib/use-dark-mode'
+import Menu from '@mui/joy/Menu';
+import MenuButton from '@mui/joy/MenuButton';
+import MenuItem from '@mui/joy/MenuItem';
+import Dropdown from '@mui/joy/Dropdown';
+import {CssVarsProvider, useColorScheme} from '@mui/joy/styles';
+
+
+import {isSearchEnabled, navigationLinks, navigationStyle} from '@/lib/config'
+import {useDarkMode} from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
+  const {isDarkMode, toggleDarkMode} = useDarkMode()
+  const {mode, setMode} = useColorScheme()
 
   React.useEffect(() => {
     setHasMounted(true)
+    setMode(isDarkMode ? 'dark' : 'light')
   }, [])
 
   const onToggleTheme = React.useCallback(() => {
     toggleDarkMode()
+    setMode(mode === 'light' ? 'dark' : 'light')
   }, [toggleDarkMode])
 
   return (
@@ -28,60 +38,73 @@ const ToggleThemeButton = () => {
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
     >
-      {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+      {hasMounted && isDarkMode ? <IoMoonSharp/> : <IoSunnyOutline/>}
     </div>
   )
 }
 
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
-}> = ({ block }) => {
-  const { components, mapPageUrl } = useNotionContext()
+}> = ({block}) => {
+  const {components, mapPageUrl} = useNotionContext()
 
   if (navigationStyle === 'default') {
-    return <Header block={block} />
+    return <Header block={block}/>
   }
 
   return (
     <header className='notion-header'>
       <div className='notion-nav-header'>
-        <Breadcrumbs block={block} rootOnly={true} />
+        <Breadcrumbs block={block} rootOnly={true}/>
 
-        <div className='notion-nav-header-rhs breadcrumbs'>
-          {navigationLinks
-            ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
-                return null
-              }
+        <CssVarsProvider>
+          <div className='notion-nav-header-rhs breadcrumbs'>
+            {/*TODO: Menu links & responsive */}
+            <Dropdown>
+              <MenuButton>Actions</MenuButton>
+              <Menu>
+                <MenuItem>Add item</MenuItem>
+              </Menu>
+            </Dropdown>
+            <ToggleThemeButton/>
+          </div>
+        </CssVarsProvider>
 
-              if (link.pageId) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.Link>
-                )
-              }
-            })
-            .filter(Boolean)}
+        {/*<div className='notion-nav-header-rhs breadcrumbs'>*/}
+        {/*  {navigationLinks*/}
+        {/*    ?.map((link, index) => {*/}
+        {/*      if (!link.pageId && !link.url) {*/}
+        {/*        return null*/}
+        {/*      }*/}
 
-          <ToggleThemeButton />
+        {/*      if (link.pageId) {*/}
+        {/*        return (*/}
+        {/*          <components.PageLink*/}
+        {/*            href={mapPageUrl(link.pageId)}*/}
+        {/*            key={index}*/}
+        {/*            className={cs(styles.navLink, 'breadcrumb', 'button')}*/}
+        {/*          >*/}
+        {/*            {link.title}*/}
+        {/*          </components.PageLink>*/}
+        {/*        )*/}
+        {/*      } else {*/}
+        {/*        return (*/}
+        {/*          <components.Link*/}
+        {/*            href={link.url}*/}
+        {/*            key={index}*/}
+        {/*            className={cs(styles.navLink, 'breadcrumb', 'button')}*/}
+        {/*          >*/}
+        {/*            {link.title}*/}
+        {/*          </components.Link>*/}
+        {/*        )*/}
+        {/*      }*/}
+        {/*    })*/}
+        {/*    .filter(Boolean)}*/}
 
-          {isSearchEnabled && <Search block={block} title={null} />}
-        </div>
+        {/*  <ToggleThemeButton />*/}
+
+        {/*  {isSearchEnabled && <Search block={block} title={null} />}*/}
+        {/*</div>*/}
       </div>
     </header>
   )
