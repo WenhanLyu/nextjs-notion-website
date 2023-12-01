@@ -44,6 +44,35 @@ export interface NavigationLink {
   url?: string
 }
 
-export const siteConfig = (config: SiteConfig): SiteConfig => {
+export const siteConfig = (config: {
+  resume: string
+  github: string
+  defaultPageIcon: null
+  navigationStyle: string
+  author: string
+  pageUrlOverrides: null
+  description: string
+  google: string
+  linkedin: string
+  defaultPageCoverPosition: number
+  defaultPageCover: null
+  isPreviewImageSupportEnabled: boolean
+  navigationLinks: (
+    | { title: string; pageId: string }
+    | { title: string; pageId: string }
+    | {
+        title: string
+        pageId: string
+      }
+    | { title: string; pageId: string }
+  )[]
+  rootBlogPageId: string
+  isRedisEnabled: boolean
+  domain: string
+  name: string
+  rootNotionSpaceId: null
+  email: string
+  rootNotionPageId: string
+}): SiteConfig => {
   return config
 }

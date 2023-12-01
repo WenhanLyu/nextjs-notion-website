@@ -3,6 +3,8 @@ import { siteConfig } from './lib/site-config'
 export default siteConfig({
   // the site's root Notion page (required)
   rootNotionPageId: 'f4f8f39eaca0487ab3f4746864412c35',
+  // blog page, different from root page (required)
+  rootBlogPageId: '460f6f019afe41658e9c822e3906009f',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -23,7 +25,7 @@ export default siteConfig({
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-  resume: '#',  // optional resume URL
+  resume: '#', // optional resume URL
   google: 'NJJJ45AAAAAJ', // optional google scholar ID
   email: 'wlyu@wm.edu', // optional email address
 
@@ -71,7 +73,6 @@ export default siteConfig({
     {
       title: 'Contact',
       pageId: '1b21e4748a3d4e69b65634fedfd4bbf7'
-    },
-
+    }
   ]
 })
