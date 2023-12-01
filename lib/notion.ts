@@ -9,7 +9,6 @@ import {
   navigationStyle
 } from './config'
 import { notion } from './notion-api'
-import { getPreviewImageMap } from './preview-images'
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
@@ -55,10 +54,10 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     }
   }
 
-  if (isPreviewImageSupportEnabled) {
-    const previewImageMap = await getPreviewImageMap(recordMap)
-    ;(recordMap as any).preview_images = previewImageMap
-  }
+  // if (isPreviewImageSupportEnabled) {
+  //   const previewImageMap = await getPreviewImageMap(recordMap)
+  //   ;(recordMap as any).preview_images = previewImageMap
+  // }
 
   return recordMap
 }
