@@ -21,8 +21,17 @@ export const rootNotionPageId: string = parsePageId(
   { uuid: false }
 )
 
+export const rootBlogPageId: string = parsePageId(
+  getSiteConfig('rootBlogPageId'),
+  { uuid: false }
+)
+
 if (!rootNotionPageId) {
   throw new Error('Config error invalid "rootNotionPageId"')
+}
+
+if (!rootBlogPageId) {
+  throw new Error('Config error invalid "rootBlogPageId"')
 }
 
 // if you want to restrict pages to a single notion workspace (optional)

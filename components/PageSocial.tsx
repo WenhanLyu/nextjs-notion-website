@@ -1,16 +1,13 @@
 import * as React from 'react'
 
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import SchoolIcon from '@mui/icons-material/School'
 import cs from 'classnames'
 
 import * as config from '@/lib/config'
 
 import styles from './PageSocial.module.css'
-import { hr } from 'date-fns/locale'
-import { title } from 'process'
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import SchoolIcon from '@mui/icons-material/School';
 
 interface SocialLink {
   name: string
@@ -35,18 +32,14 @@ const socialLinks: SocialLink[] = [
     name: 'github',
     href: `https://github.com/${config.github}`,
     title: `GitHub @${config.github}`,
-    icon: (
-      <GitHubIcon />
-    )
+    icon: <GitHubIcon />
   },
 
   config.linkedin && {
     name: 'linkedin',
     href: `https://www.linkedin.com/in/${config.linkedin}`,
     title: `LinkedIn ${config.author}`,
-    icon: (
-      <LinkedInIcon />
-    )
+    icon: <LinkedInIcon />
   },
 
   config.newsletter && {
@@ -75,18 +68,29 @@ const socialLinks: SocialLink[] = [
     name: 'resume',
     href: config.resume,
     title: 'My CV',
-    icon: (<svg width="32pt" height="21pt" viewBox="-1 -1 34 23" xmlns="http://www.w3.org/2000/svg"><g id="fontsvg1701379833028" strokeLinecap="round" fillRule="evenodd" ><path d="M 11.25 20.25 L 2.25 20.25 L 2.25 18 L 0 18 L 0 2.25 L 2.25 2.25 L 2.25 0 L 11.25 0 L 11.25 2.25 L 13.5 2.25 L 13.5 6.75 L 9 6.75 L 9 2.25 L 4.5 2.25 L 4.5 18 L 9 18 L 9 13.5 L 13.5 13.5 L 13.5 18 L 11.25 18 L 11.25 20.25 Z M 27 20.25 L 22.5 20.25 L 22.5 18 L 20.25 18 L 20.25 15.75 L 18 15.75 L 18 0 L 22.5 0 L 22.5 15.75 L 27 15.75 L 27 0 L 31.5 0 L 31.5 15.75 L 29.25 15.75 L 29.25 18 L 27 18 L 27 20.25 Z" vectorEffect="non-scaling-stroke" /></g></svg>),
+    icon: (
+      <svg
+        width='32pt'
+        height='21pt'
+        viewBox='-1 -1 34 23'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <g id='fontsvg1701379833028' strokeLinecap='round' fillRule='evenodd'>
+          <path
+            d='M 11.25 20.25 L 2.25 20.25 L 2.25 18 L 0 18 L 0 2.25 L 2.25 2.25 L 2.25 0 L 11.25 0 L 11.25 2.25 L 13.5 2.25 L 13.5 6.75 L 9 6.75 L 9 2.25 L 4.5 2.25 L 4.5 18 L 9 18 L 9 13.5 L 13.5 13.5 L 13.5 18 L 11.25 18 L 11.25 20.25 Z M 27 20.25 L 22.5 20.25 L 22.5 18 L 20.25 18 L 20.25 15.75 L 18 15.75 L 18 0 L 22.5 0 L 22.5 15.75 L 27 15.75 L 27 0 L 31.5 0 L 31.5 15.75 L 29.25 15.75 L 29.25 18 L 27 18 L 27 20.25 Z'
+            vectorEffect='non-scaling-stroke'
+          />
+        </g>
+      </svg>
+    )
   },
 
   config.google && {
     name: 'google',
     href: `https://scholar.google.com/citations?user=${config.google}&hl=en`,
     title: 'Google Scholar',
-    icon: (
-      <SchoolIcon />
-    )
+    icon: <SchoolIcon />
   }
-
 ].filter(Boolean)
 
 export const PageSocial: React.FC = () => {

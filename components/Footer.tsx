@@ -1,14 +1,14 @@
 import * as React from 'react'
 
+import EmailIcon from '@mui/icons-material/Email'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import SchoolIcon from '@mui/icons-material/School'
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import SchoolIcon from '@mui/icons-material/School';
-import EmailIcon from '@mui/icons-material/Email';
 
 import * as config from '@/lib/config'
 
@@ -19,7 +19,9 @@ import styles from './styles.module.css'
 export function FooterImpl() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright {new Date().getFullYear()} {config.author}</div>
+      <div className={styles.copyright}>
+        Copyright {new Date().getFullYear()} @ {config.author}
+      </div>
       <div className={styles.social}>
         {config.twitter && (
           <a

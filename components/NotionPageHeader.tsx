@@ -1,39 +1,37 @@
 import * as React from 'react'
 
 import * as types from 'notion-types'
+import MenuIcon from '@mui/icons-material/Menu'
+import { IconButton } from '@mui/joy'
+import Dropdown from '@mui/joy/Dropdown'
+import Menu from '@mui/joy/Menu'
+import MenuButton from '@mui/joy/MenuButton'
+import MenuItem from '@mui/joy/MenuItem'
+import { CssVarsProvider } from '@mui/joy/styles'
+import { useMediaQuery } from '@mui/material'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Breadcrumbs, Header, useNotionContext } from 'react-notion-x'
 
-import Menu from '@mui/joy/Menu';
-import MenuButton from '@mui/joy/MenuButton';
-import MenuItem from '@mui/joy/MenuItem';
-import Dropdown from '@mui/joy/Dropdown';
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
-import { useMediaQuery } from '@mui/material';
-import { IconButton } from '@mui/joy'
-import MenuIcon from '@mui/icons-material/Menu';
-
-import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+import { navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
-
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const { isDarkMode, toggleDarkMode } = useDarkMode()
-  const { mode, setMode } = useColorScheme()
+  // const { mode, setMode } = useColorScheme()
 
   React.useEffect(() => {
     setHasMounted(true)
-    setMode(isDarkMode ? 'dark' : 'light')
+    // setMode(isDarkMode ? 'dark' : 'light')
   }, [])
 
-  React.useEffect(() => {
-    setMode(isDarkMode ? 'dark' : 'light')
-  }, [isDarkMode])
+  // React.useEffect(() => {
+  //   setMode(isDarkMode ? 'dark' : 'light')
+  // }, [isDarkMode])
 
   const onToggleTheme = React.useCallback(() => {
     toggleDarkMode()
@@ -54,8 +52,7 @@ export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
 }> = ({ block }) => {
   const { components, mapPageUrl } = useNotionContext()
-  const isWideScreen = useMediaQuery('(min-width: 768px)');
-
+  const isWideScreen = useMediaQuery('(min-width: 768px)')
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -72,7 +69,7 @@ export const NotionPageHeader: React.FC<{
               <>
                 {navigationLinks?.map((link, index) => {
                   if (!link.pageId && !link.url) {
-                    return null;
+                    return null
                   }
 
                   if (link.pageId) {
@@ -84,7 +81,7 @@ export const NotionPageHeader: React.FC<{
                       >
                         {link.title}
                       </components.PageLink>
-                    );
+                    )
                   } else {
                     return (
                       <components.Link
@@ -94,7 +91,7 @@ export const NotionPageHeader: React.FC<{
                       >
                         {link.title}
                       </components.Link>
-                    );
+                    )
                   }
                 })}
               </>
@@ -108,7 +105,7 @@ export const NotionPageHeader: React.FC<{
                     <>
                       {navigationLinks?.map((link, index) => {
                         if (!link.pageId && !link.url) {
-                          return null;
+                          return null
                         }
 
                         if (link.pageId) {
@@ -120,7 +117,7 @@ export const NotionPageHeader: React.FC<{
                             >
                               {link.title}
                             </MenuItem>
-                          );
+                          )
                         } else {
                           return (
                             <MenuItem
@@ -130,13 +127,12 @@ export const NotionPageHeader: React.FC<{
                             >
                               {link.title}
                             </MenuItem>
-                          );
+                          )
                         }
                       })}
                     </>
                   </Menu>
                 </Dropdown>
-
               </>
             )}
             <ToggleThemeButton />
@@ -144,5 +140,5 @@ export const NotionPageHeader: React.FC<{
         </CssVarsProvider>
       </div>
     </header>
-  );
+  )
 }
