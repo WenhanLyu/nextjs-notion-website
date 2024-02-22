@@ -50,7 +50,12 @@ export const siteConfig = (config: {
   defaultPageIcon: null
   navigationStyle: string
   author: string
-  pageUrlOverrides: null
+  pageUrlOverrides: {
+    '/blog': string
+    '/about': string
+    '/publications': string
+    '/contact': string
+  }
   description: string
   google: string
   linkedin: string

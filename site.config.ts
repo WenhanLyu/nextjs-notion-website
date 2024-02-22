@@ -16,7 +16,7 @@ export default siteConfig({
   author: 'Wenhan Lyu',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: "Wenhan Lyu's personal website",
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
@@ -26,7 +26,7 @@ export default siteConfig({
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
   resume: '#', // optional resume URL
-  google: 'NJJJ45AAAAAJ', // optional google scholar ID
+  google: 'CceUXEYAAAAJ', // optional google scholar ID
   email: 'wlyu@wm.edu', // optional email address
 
   // default notion icon and cover images for site-wide consistency (optional)
@@ -36,6 +36,7 @@ export default siteConfig({
   defaultPageCoverPosition: 0.5,
 
   // whether or not to enable support for LQIP preview images (optional)
+  // Shouln't be true as LQIP has been removed from the code and would cause error in Sharp
   isPreviewImageSupportEnabled: false,
 
   // whether or not redis is enabled for caching generated preview images (optional)
@@ -47,11 +48,13 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
-  pageUrlOverrides: null,
+  pageUrlOverrides: {
+    '/about': 'e003aedc7f3444069486b13e647c16aa',
+    '/publications': '53f582b8624148a38f18bbeb8bcfe5c3',
+    '/blog': '460f6f019afe41658e9c822e3906009f',
+    '/contact': '1b21e4748a3d4e69b65634fedfd4bbf7'
+  },
+  // pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
@@ -63,7 +66,7 @@ export default siteConfig({
       pageId: 'e003aedc7f3444069486b13e647c16aa'
     },
     {
-      title: 'Research',
+      title: 'Publications',
       pageId: '53f582b8624148a38f18bbeb8bcfe5c3'
     },
     {
@@ -74,5 +77,9 @@ export default siteConfig({
       title: 'Contact',
       pageId: '1b21e4748a3d4e69b65634fedfd4bbf7'
     }
+    // {
+    //   title: 'News',
+    //   pageId: '8f2f00239583461794e7c2b66d6aa156'
+    // }
   ]
 })
