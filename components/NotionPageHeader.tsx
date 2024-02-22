@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import * as types from 'notion-types'
 import MenuIcon from '@mui/icons-material/Menu'
-import { IconButton } from '@mui/joy'
+import { IconButton, useColorScheme } from '@mui/joy'
 import Dropdown from '@mui/joy/Dropdown'
 import Menu from '@mui/joy/Menu'
 import MenuButton from '@mui/joy/MenuButton'
@@ -22,20 +22,20 @@ import styles from './styles.module.css'
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const { isDarkMode, toggleDarkMode } = useDarkMode()
-  // const { mode, setMode } = useColorScheme()
+  const { mode, setMode } = useColorScheme()
 
   React.useEffect(() => {
     setHasMounted(true)
-    // setMode(isDarkMode ? 'dark' : 'light')
+    setMode(isDarkMode ? 'dark' : 'light')
   }, [])
 
-  // React.useEffect(() => {
-  //   setMode(isDarkMode ? 'dark' : 'light')
-  // }, [isDarkMode])
+  React.useEffect(() => {
+    setMode(isDarkMode ? 'dark' : 'light')
+  }, [isDarkMode])
 
   const onToggleTheme = React.useCallback(() => {
     toggleDarkMode()
-    // setMode(mode === 'light' ? 'dark' : 'light')
+    setMode(mode === 'light' ? 'dark' : 'light')
   }, [toggleDarkMode])
 
   return (
