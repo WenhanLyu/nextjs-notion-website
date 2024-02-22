@@ -3,11 +3,7 @@ import { mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
-import {
-  isPreviewImageSupportEnabled,
-  navigationLinks,
-  navigationStyle
-} from './config'
+import { navigationLinks, navigationStyle } from './config'
 import { notion } from './notion-api'
 
 const getNavigationLinkPages = pMemoize(
